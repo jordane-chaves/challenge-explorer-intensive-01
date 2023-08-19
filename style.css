@@ -1,0 +1,301 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --color-white: #ffffff;
+  --color-blue-900: #312d64;
+  --color-pink-50: #f9f4fb;
+  --color-pink-800: #b52184;
+  --color-gradient-blue: linear-gradient(134deg, #343193 0%, #302c63 100%);
+}
+
+html,
+body,
+input,
+textarea,
+button {
+  color: var(--color-blue-900);
+  font-family: "Mulish", sans-serif;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.2);
+}
+
+body {
+  background: var(--color-pink-50);
+}
+
+.container {
+  margin: auto;
+  padding-inline: 4rem;
+  width: min(122rem, 100%);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-pink-800);
+  font-weight: 900;
+}
+
+#app {
+  min-width: 32rem;
+}
+
+#app > *:nth-child(2n) {
+  background: var(--color-gradient-blue);
+}
+
+header {
+  text-align: center;
+  padding-bottom: 9.6rem;
+}
+
+#astronaut {
+  margin-bottom: 2rem;
+  max-width: 72rem;
+  width: 100%;
+}
+
+header h1 {
+  font-size: clamp(3.2rem, 2vw + 2.4rem, 5.8rem);
+}
+
+header p {
+  font-size: clamp(2rem, 2vw + 0.5rem, 3.2rem);
+  margin: 0.4rem;
+}
+
+header a {
+  border: 0;
+  border-radius: 9999px;
+  background: transparent;
+
+  height: 10.5rem;
+  width: 5.85rem;
+
+  display: block;
+
+  margin-top: 3.6rem;
+  margin-inline: auto;
+}
+
+/* Cards */
+main {
+  padding-block: 6rem;
+}
+
+.cards {
+  display: grid;
+  gap: 4.8rem;
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.2rem;
+
+  padding: 2.4rem 6rem 2.4rem 2.4rem;
+}
+
+.card > img {
+  border-radius: 50%;
+}
+
+.card .content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+h3 {
+  font-size: 2.8rem;
+}
+
+/* Form */
+section .container {
+  padding-block: 9.6rem;
+}
+
+h2 {
+  font-size: 3.2rem;
+  margin-bottom: 4rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.input-wrapper {
+  border: 1.5px solid var(--color-blue-900);
+  border-radius: 1.6rem;
+  background: var(--color-pink-50);
+
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  padding: 1.2rem 1.6rem;
+}
+
+.input-wrapper:has(*:focus) {
+  outline: 2px solid var(--color-pink-800);
+}
+
+label {
+  display: none;
+}
+
+input,
+textarea {
+  background: transparent;
+  border: 0;
+
+  outline: none;
+
+  width: 100%;
+}
+
+textarea {
+  line-height: 1.4;
+  min-height: 12.6rem;
+  resize: none;
+}
+
+form button {
+  background: var(--color-gradient-blue);
+  border: 0;
+  border-radius: 1.6rem;
+
+  color: var(--color-white);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 2.4rem;
+
+  padding: 1.6rem;
+  width: max-content;
+
+  outline-color: var(--color-pink-800);
+}
+
+footer {
+  color: var(--color-white);
+  font-size: 2rem;
+  text-align: center;
+
+  padding: 3.2rem 1.6rem;
+}
+
+/* Animation */
+#astronaut {
+  animation: slide-down 1.5s ease-out;
+}
+
+header a {
+  animation: attention-move 2s 2.5s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.card {
+  --delay: 600ms;
+  animation: appear 400ms var(--delay) backwards;
+}
+
+.card:hover > img {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  50% {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes attention-move {
+  20%, 45% {
+    transform: translateY(10px);
+  }
+  
+  30%, 60% {
+    transform: translateY(0px);
+  }
+}
+
+/* Responsive */
+@media (min-width: 900px) {
+  header {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 2.8rem;
+
+    text-align: initial;
+  }
+
+  header a {
+    margin: 18rem 0 3.2rem;
+  }
+
+  header > div {
+    flex: 1;
+  }
+
+  header > div:nth-child(2) {
+    align-self: flex-end;
+  }
+
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card {
+    padding: 2.4rem;
+  }
+
+  .form-wrapper {
+    max-width: 60rem;
+  }
+
+  #app > section {
+    background: url('./assets/image02.png') no-repeat right 100%;
+  }
+}
